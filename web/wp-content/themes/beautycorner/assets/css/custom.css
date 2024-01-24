@@ -1,0 +1,45 @@
+.services__sublist {
+  list-style: none;
+}
+.slider-plugin {
+  position: relative;
+}
+
+.slider-plugin::after {
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iNDguMDgiIGhlaWdodD0iNzMuNTQiIHZpZXdCb3g9Ii0xLjAwMiAtMSA1Mi4wODMgNzcuNTM5Ij48ZGVmcz48cGF0aCBpZD0iYSIgZD0ibTI0LjA0IDAgMjQuMDQgMzYuNzctMjQuMDQgMzYuNzdMMCAzNi43NyAyNC4wNCAwWiIvPjwvZGVmcz48dXNlIHhsaW5rOmhyZWY9IiNhIiBmaWxsPSIjYzEwMDY5Ii8+PC9zdmc+);
+  background-repeat: no-repeat;
+  bottom: -38px;
+  content: "";
+  height: 74px;
+  left: 50%;
+  position: absolute;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  width: 45px;
+  z-index: 2;
+}
+
+.home-about .home-about__content p {
+  font-size: 18px;
+}
+#scroll-top {
+  border: 2px solid #c10069;
+  
+}
+
+.home-schedule .home-schedule__item span {
+  font-size: 20px;
+  font-weight: 600;
+  font-family: BellotaText, sans-serif;
+}
+
+.nf-form-layout form input {
+  width: 100%;
+}
+
+.contact__tab.tab-active{
+  color: #a00057;
+}
+.contact__tab {
+  cursor: pointer;
+}
