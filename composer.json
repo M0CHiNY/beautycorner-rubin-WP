@@ -13,6 +13,10 @@
     {
       "type": "composer",
       "url": "https://wpackagist.org"
+    },
+    {
+      "type": "composer",
+      "url": "https://connect.advancedcustomfields.com"
     }
   ],
   "minimum-stability": "dev",
@@ -45,7 +49,8 @@
     "wpackagist-plugin/woocommerce": "^8.5",
     "wpackagist-plugin/wordpress-seo": "^21.7",
     "wpackagist-plugin/wpspeed": "^2.5",
-    "wpackagist-theme/oceanwp": "^3.5"
+    "wpackagist-theme/oceanwp": "^3.5",
+    "wpengine/advanced-custom-fields-pro": "^6.2"
   },
   "extra": {
     "installer-paths": {
@@ -55,6 +60,7 @@
     "preserve-paths": [
       "web/wp-config.php",
       "web/wp-content/uploads",
+      "web/wp-content/plugins/revslider",
       "web/wp-content/themes/beautycorner"
     ],
     "wordpress-install-dir": "web"

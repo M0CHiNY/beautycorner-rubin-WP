@@ -1,5 +1,11 @@
-/*!
- * Theme Name: Beautycorner child
-   Template: OceanWP
-   Version: 1.0.0
- */
+/*
+Theme Name: Beauty Corner Theme
+Theme URI: https://oceanwp.org/
+Description: OceanWP WordPress theme. Beautycorner child theme.
+Author: RankExperts
+Author URI: https://oceanwp.org/
+Template: oceanwp
+Version: 1.0
+*/
+
+/* Parent stylesheet should be loaded from functions.php not using @import */

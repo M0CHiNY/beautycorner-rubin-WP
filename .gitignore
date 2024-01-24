@@ -6,6 +6,9 @@ web/*
 !web/wp-content/
 web/wp-content/*
 !web/wp-content/themes/
+!web/wp-content/plugins/
+web/wp-content/plugins/*
+!web/wp-content/plugins/revslider/
 web/wp-content/themes/*
 !web/wp-content/themes/beautycorner/
 # Exclude auth.json from Git repo
