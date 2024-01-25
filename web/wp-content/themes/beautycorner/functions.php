@@ -28,3 +28,4 @@
 
  require get_stylesheet_directory() . '/inc/scripts.php';
  require get_stylesheet_directory() . '/inc/svg-support.php';
+ require get_stylesheet_directory() . '/inc/cpt.php';
