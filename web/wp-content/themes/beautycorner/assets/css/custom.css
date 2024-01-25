@@ -24,7 +24,6 @@
 }
 #scroll-top {
   border: 2px solid #c10069;
-  
 }
 
 .home-schedule .home-schedule__item span {
@@ -37,9 +36,40 @@
   width: 100%;
 }
 
-.contact__tab.tab-active{
+.contact__tab.tab-active {
   color: #a00057;
 }
 .contact__tab {
   cursor: pointer;
+}
+
+#site-navigation-wrap .menu-item span {
+  font-size: 12px;
+  font-family: BellotaText, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+#site-navigation-wrap .current-menu-item span {
+  color: #a00057;
+}
+.prices__card {
+  background-color: #d9d2ce;
+}
+
+.prices__inner .wp-block-table table {
+  border-collapse: collapse;
+}
+.prices__inner .wp-block-table table tbody tr,
+.prices__inner .wp-block-table table tbody tr td,
+.prices__inner .wp-block-table table tbody tr th {
+  font-size: 18px;
+  border: none;
+  font-family: BellotaText, sans-serif;
+}
+.prices__inner .wp-block-table table tbody tr td:nth-child(2) {
+  text-align: end;
+  white-space: nowrap;
+}
+.prices__inner .wp-block-table table tbody tr td b {
+  font-weight: 700;
 }

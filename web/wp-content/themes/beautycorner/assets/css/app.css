@@ -581,6 +581,10 @@ html {
   margin-bottom: 20px;
   text-align: center;
 }
+.prices {
+  padding-top: 100px;
+}
+
 .prices__title {
   margin-bottom: 100px;
 }
@@ -611,12 +615,12 @@ html {
   font-weight: 400;
   text-align: center;
 }
-.prices__card-title {
+.prices__inner h3 {
   color: #670034;
+  font-weight: bold;
   font-size: 20px;
-  font-weight: 700;
-  margin-bottom: 30px;
 }
+
 .prices__item {
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
@@ -768,6 +772,10 @@ html {
   transform: translateY(-50%);
   width: 7px;
 }
+.contact {
+padding-bottom: 0;
+}
+
 .contact__title {
   margin-bottom: 70px;
 }
@@ -798,6 +806,10 @@ html {
   width: 100%;
 }
 @media (max-width: 1024px) {
+.prices {
+  padding-top: 50px;
+}
+
   .contact__inner-form {
     padding: 0 5px;
   }
@@ -985,7 +997,6 @@ html {
   color: #333;
 }
 .contact__links {
-  margin-top: 5px;
   max-width: 595px;
   padding: 5px 25px 0;
   width: 100%;
@@ -1035,6 +1046,7 @@ html {
 .contact address.contact__info {
   color: #000;
   font-size: 24px;
+  margin-bottom: 0;
   -webkit-transition: color 0.8s;
   transition: color 0.8s;
 }
