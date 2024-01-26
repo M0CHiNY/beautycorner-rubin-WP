@@ -81,7 +81,7 @@ function bc_register_post_type()
 
     $args = array(
         'labels' => $labels,
-        'supports' => array('title', 'editor'),
+        'supports' => array('title'),
         'public' => true,
         'publicly_queryable' => true,
         'show_ui' => true,

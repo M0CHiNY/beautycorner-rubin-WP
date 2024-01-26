@@ -48,6 +48,7 @@
     "wpackagist-plugin/ultimate-social-media-icons": "^2.8",
     "wpackagist-plugin/webp-express": "^0.25.8",
     "wpackagist-plugin/woocommerce": "^8.5",
+    "wpackagist-plugin/woocommerce-products-filter": "1.3.5.1",
     "wpackagist-plugin/wordpress-seo": "^21.7",
     "wpackagist-plugin/wpspeed": "^2.5",
     "wpackagist-theme/oceanwp": "^3.5",
