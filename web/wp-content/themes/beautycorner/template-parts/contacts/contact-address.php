@@ -60,6 +60,7 @@
               </g>
             </svg>
           </span>
+          <?php echo $info['name-of-salon']; ?><br>
           <?php echo $info['adresse_der_unterkunft']; ?>
         </address>
       <?php endif; ?>

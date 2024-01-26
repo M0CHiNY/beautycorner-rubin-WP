@@ -681,6 +681,7 @@ html {
   margin-bottom: 40px;
 }
 .about__author {
+  display: block;
   border-radius: 50%;
   height: 150px;
   margin: 0 auto 40px;
@@ -764,13 +765,11 @@ html {
   background-color: #070707;
   border-radius: 50%;
   content: "";
-  height: 7px;
+  height: 6px;
   left: 0;
   position: absolute;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  transform: translateY(-50%);
-  width: 7px;
+  top: 10px;
+  width: 6px;
 }
 .contact {
 padding-bottom: 0;
@@ -1149,16 +1148,20 @@ padding-bottom: 0;
   font-size: 60px;
   font-weight: 400;
   margin-bottom: 40px;
-  padding: 0 25px;
   text-align: center;
 }
 .beauty-block__img {
   display: block;
-  margin-top: 220px;
+  margin-top: 160px;
   max-width: 400px;
   -o-object-fit: cover;
   object-fit: cover;
   width: 100%;
+}
+@media (max-width: 450px) {
+  .beauty-block__caption {
+    font-size: 45px;
+  }
 }
 @media (max-width: 767px) {
   .beauty-block__img {

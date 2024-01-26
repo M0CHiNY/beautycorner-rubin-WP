@@ -31,13 +31,13 @@ get_header();
   </div>
 </section>
 
-<section class="home-serteficates">
+<section class="section home-serteficates">
   <div class="container">
 
     <!-- block map start -->
     <?php get_template_part('template-parts/map'); ?>
     <!-- block map end -->
-    
+
   </div>
 </section>
 

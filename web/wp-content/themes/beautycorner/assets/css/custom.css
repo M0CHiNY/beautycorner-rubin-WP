@@ -73,3 +73,123 @@
 .prices__inner .wp-block-table table tbody tr td b {
   font-weight: 700;
 }
+
+.beauty-block__icon {
+  margin: 0 auto;
+  display: flex;
+  margin-bottom: 30px;
+}
+.beauty-block__title {
+  font-family: BellotaText, sans-serif;
+  font-weight: 300 !important;
+}
+.career__item {
+  list-style: none;
+}
+.beauty-block__content-box {
+  font-family: BellotaText, sans-serif;
+  font-weight: 300 !important;
+}
+.beauty-block__content-box p {
+  font-family: inherit;
+  font-weight: 300 !important;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+.beauty-block__content-box h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: inherit;
+  font-weight: 700 !important;
+  color: #8f6f71;
+}
+.beauty-block__content {
+  min-height: unset;
+}
+.beauty-block__content {
+  padding: 0 25px;
+}
+.beauty-block__caption {
+  margin-bottom: 25px;
+}
+.beauty-block__img-caption {
+  text-align: center;
+  color: rgb(6, 6, 6);
+  font-size: 22px;
+  font-family: BellotaText, sans-serif;
+  font-weight: 300 !important;
+  margin: 0 10px;
+}
+.menu-item.current-menu-ancestor > a span {
+  color: #c10069 !important;
+}
+#site-navigation-wrap {
+  top: 20px;
+}
+#site-header {
+}
+#top-bar-wrap {
+  background-color: #f0ecf0;
+}
+#top-bar {
+  margin: 0 auto;
+}
+#top-bar-inner {
+  max-width: 600px;
+  width: 100%;
+  margin-left: auto;
+}
+#top-bar-social.top-bar-right {
+  padding-right: 15px;
+}
+
+.beauty-block__first {
+  padding-left: 25px;
+  padding-right: 25px;
+}
+.beauty-block__content {
+  padding-left: 0;
+  padding-right: 0;
+}
+.beauty-block__content ul li {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-bottom: 15px;
+}
+.beauty-block__content p {
+  font-family: BellotaText, sans-serif;
+  font-weight: 300;
+}
+.beauty-block__bottom-img {
+  max-height: 390px;
+  width: fit-content;
+}
+.beauty-block__img-caption {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.search-toggle-li .icon-magnifier {
+  font-size: 16px;
+  color: #690036;
+  font-weight: 700;
+}
+
+.search-toggle-li .icon-magnifier::before {
+  position: relative;
+  bottom: -5px;
+}
+
+.menu-item a:focus,
+#site-logo #site-logo-inner a:focus {
+  outline: solid 1px transparent !important;
+  transition: none !important;
+  -webkit-transition: none !important;
+}
+
+.footer__bottom-text a span {
+  color: #c10069;
+}
