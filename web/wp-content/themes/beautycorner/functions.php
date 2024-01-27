@@ -20,12 +20,14 @@
  * @link http://codex.wordpress.org/Child_Themes
  */
 
- 
+
 
 /**
  * Implement scripts
  */
 
- require get_stylesheet_directory() . '/inc/scripts.php';
- require get_stylesheet_directory() . '/inc/svg-support.php';
- require get_stylesheet_directory() . '/inc/cpt.php';
+require get_stylesheet_directory() . '/inc/scripts.php';
+require get_stylesheet_directory() . '/inc/svg-support.php';
+require get_stylesheet_directory() . '/inc/cpt.php';
+require get_stylesheet_directory() . '/custom-oceanwp/cart/mini-cart.php';
+require get_stylesheet_directory() . '/custom-oceanwp/settings.php';

@@ -17,7 +17,7 @@
               </g>
             </svg>
           </span>
-          <a class="contact__link" href="<?php echo $mail['emaile']; ?>"><?php echo $mail['emaile']; ?></a>
+          <a class="contact__link" href="mailto:<?php echo $mail['emaile']; ?>"><?php echo $mail['emaile']; ?></a>
         </div>
       <?php endif; ?>
     <?php endforeach; ?>
