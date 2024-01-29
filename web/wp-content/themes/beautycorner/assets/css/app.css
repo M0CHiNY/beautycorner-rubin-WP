@@ -1262,7 +1262,7 @@ html {
   z-index: 999;
 }
 .loader-line {
-  top:40%;
+  top: 40%;
   transform: translateY(-50%);
   width: 70%;
   height: 1px;
@@ -1302,4 +1302,22 @@ html {
     left: 100%;
     width: 100%;
   }
+}
+
+/* right-sitebar */
+.bc_right-sitebar .sidebar-box {
+  border-radius: 16px;
+  background: #d9d2ce;
+  background-color: red;
+}
+.sidebar-box.iksm-widget.clr {
+  background: #d9d2ce;
+}
+.bc_right-sitebar .iksm-term__inner {
+  border-radius: 16px;
+  background: #fafafa;
+  margin-bottom: 15px;
+}
+.bc_right-sitebar .iksm-terms-tree--children {
+  padding-left: 10px;
 }

@@ -30,4 +30,20 @@ require get_stylesheet_directory() . '/inc/scripts.php';
 require get_stylesheet_directory() . '/inc/svg-support.php';
 require get_stylesheet_directory() . '/inc/cpt.php';
 require get_stylesheet_directory() . '/custom-oceanwp/cart/mini-cart.php';
+// require get_stylesheet_directory() . '/custom-oceanwp/cart/cart.php';
 require get_stylesheet_directory() . '/custom-oceanwp/settings.php';
+
+
+function bc_page_layout_class( $class ) {
+
+	// Alter your layout
+	if ( is_singular( 'page' ) ) {
+		$class = 'full-width';
+	}
+
+	// Return correct class
+	return $class;
+
+}
+add_filter( 'ocean_post_layout_class', 'bc_page_layout_class', 20 );
+// remove_action( 'woocommerce_product_image_render_on_sale_badge', 'render_on_sale_badge', 10, 3 );
