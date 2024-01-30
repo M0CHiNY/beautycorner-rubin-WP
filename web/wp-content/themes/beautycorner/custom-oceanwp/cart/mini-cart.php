@@ -12,33 +12,7 @@ function my_menu_cart_icon_html($html)
 add_filter('ocean_menu_cart_icon_html', 'my_menu_cart_icon_html');
 
 
+// remove_action('woocommerce_checkout_order_review', 'woocommerce_order_review', 10);
 
-//add icon to buttons
-remove_action('woocommerce_widget_shopping_cart_buttons', 'woocommerce_widget_shopping_cart_button_view_cart', 10);
-remove_action('woocommerce_widget_shopping_cart_buttons', 'woocommerce_widget_shopping_cart_proceed_to_checkout', 20);
 
-if (!function_exists('bc_woocommerce_widget_shopping_cart_button_view_cart')) {
-  function bc_woocommerce_widget_shopping_cart_button_view_cart()
-  {
-    echo '<a href="' . esc_url(wc_get_cart_url()) . '" class="button wc-forward">
-    <svg width="25" height="26" viewBox="0 0 25 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M12.5 4.40625C20.3125 4.40625 25 13 25 13C25 13 20.3125 21.5938 12.5 21.5938C4.6875 21.5938 0 13 0 13C0 13 4.6875 4.40625 12.5 4.40625ZM12.5 5.96875C7 5.96875 3.12188 11.0484 1.83594 13C3.12031 14.95 6.99844 20.0312 12.5 20.0312C18 20.0312 21.8781 14.9516 23.1641 13C21.8797 11.05 18.0016 5.96875 12.5 5.96875ZM12.5 7.53125C13.9504 7.53125 15.3414 8.10742 16.367 9.13301C17.3926 10.1586 17.9688 11.5496 17.9688 13C17.9688 14.4504 17.3926 15.8414 16.367 16.867C15.3414 17.8926 13.9504 18.4688 12.5 18.4688C11.0496 18.4688 9.6586 17.8926 8.63301 16.867C7.60742 15.8414 7.03125 14.4504 7.03125 13C7.03125 11.5496 7.60742 10.1586 8.63301 9.13301C9.6586 8.10742 11.0496 7.53125 12.5 7.53125ZM12.5 9.09375C11.4644 9.09499 10.4715 9.50694 9.73923 10.2392C9.00694 10.9715 8.59499 11.9644 8.59375 13C8.59375 15.1531 10.3453 16.9062 12.5 16.9062C14.6547 16.9062 16.4062 15.1531 16.4062 13C16.4062 10.8469 14.6547 9.09375 12.5 9.09375Z" fill="white"/>
-</svg>
-    ' . esc_html__('View cart', 'woocommerce') . '</a>';
-  }
-}
-
-if (!function_exists('bc_woocommerce_widget_shopping_cart_proceed_to_checkout')) {
-  function bc_woocommerce_widget_shopping_cart_proceed_to_checkout()
-  {
-    echo '<a href="' . esc_url(wc_get_checkout_url()) . '" class="button checkout wc-forward">    
-    <svg width="25" height="26" viewBox="0 0 25 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M12.5 4.40625C20.3125 4.40625 25 13 25 13C25 13 20.3125 21.5938 12.5 21.5938C4.6875 21.5938 0 13 0 13C0 13 4.6875 4.40625 12.5 4.40625ZM12.5 5.96875C7 5.96875 3.12188 11.0484 1.83594 13C3.12031 14.95 6.99844 20.0312 12.5 20.0312C18 20.0312 21.8781 14.9516 23.1641 13C21.8797 11.05 18.0016 5.96875 12.5 5.96875ZM12.5 7.53125C13.9504 7.53125 15.3414 8.10742 16.367 9.13301C17.3926 10.1586 17.9688 11.5496 17.9688 13C17.9688 14.4504 17.3926 15.8414 16.367 16.867C15.3414 17.8926 13.9504 18.4688 12.5 18.4688C11.0496 18.4688 9.6586 17.8926 8.63301 16.867C7.60742 15.8414 7.03125 14.4504 7.03125 13C7.03125 11.5496 7.60742 10.1586 8.63301 9.13301C9.6586 8.10742 11.0496 7.53125 12.5 7.53125ZM12.5 9.09375C11.4644 9.09499 10.4715 9.50694 9.73923 10.2392C9.00694 10.9715 8.59499 11.9644 8.59375 13C8.59375 15.1531 10.3453 16.9062 12.5 16.9062C14.6547 16.9062 16.4062 15.1531 16.4062 13C16.4062 10.8469 14.6547 9.09375 12.5 9.09375Z" fill="white"/>
-</svg>
-    ' . esc_html__('Checkout', 'woocommerce') . '</a>';
-  }
-}
-
-add_action('woocommerce_widget_shopping_cart_buttons', 'bc_woocommerce_widget_shopping_cart_button_view_cart', 10);
-add_action('woocommerce_widget_shopping_cart_buttons', 'bc_woocommerce_widget_shopping_cart_proceed_to_checkout', 20);
 
