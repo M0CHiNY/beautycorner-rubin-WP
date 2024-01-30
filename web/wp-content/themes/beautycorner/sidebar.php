@@ -12,7 +12,8 @@ if (in_array(oceanwp_post_layout(), array('full-screen', 'full-width'), true)) {
 
 <?php do_action('ocean_before_sidebar'); ?>
 
-<aside id="right-sidebar" class="sidebar-container widget-area sidebar-primary" <?php oceanwp_schema_markup('sidebar'); ?> role="complementary" aria-label="<?php esc_attr_e('Primary Sidebar', 'oceanwp'); ?>">
+<aside id="right-sidebar" class="sidebar-container widget-area sidebar-primary bc_right-sitebar" <?php oceanwp_schema_markup('sidebar'); ?> role="complementary"
+	aria-label="<?php esc_attr_e('Primary Sidebar', 'oceanwp'); ?>">
 
 	<?php do_action('ocean_before_sidebar_inner'); ?>
 
@@ -20,20 +21,10 @@ if (in_array(oceanwp_post_layout(), array('full-screen', 'full-width'), true)) {
 
 		<?php
 		$sidebar = oceanwp_get_sidebar();
-		if (!is_product_category()) {
+		
 			if ($sidebar) {
-
 				dynamic_sidebar($sidebar);
 			}
-		} else {
-
-			if (is_active_sidebar('beautycorner_rubin_filter_attributes')) {
-				echo '<div class="sidebar-box beautycorner__customsitebar">';
-				dynamic_sidebar('beautycorner_rubin_filter_attributes');
-				echo '</div">';
-			}
-		}
-
 		?>
 
 	</div><!-- #sidebar-inner -->
