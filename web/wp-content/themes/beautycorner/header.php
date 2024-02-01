@@ -25,17 +25,7 @@
 
 
   <?php do_action('ocean_before_outer_wrap'); ?>
-  <script>
-  // Очікування завантаження всіх ресурсів сторінки
-  window.addEventListener('load', function() {
-    // Знаходимо ваш елемент
-    var loaderWrapper = document.querySelector('.loader-wrapper');
-    // Видаляємо клас loading з body, дозволяючи скролінг
-    document.body.classList.remove('loading');
-    // Додаємо стиль display: none;
-    loaderWrapper.style.display = 'none';
-  });
-</script>
+
   <!-- custom preloader start -->
   <!-- <div class="loader-wrapper">
     <div class="loader-line"></div>
@@ -61,3 +51,21 @@
       <main id="main" class="site-main clr" <?php oceanwp_schema_markup('main'); ?> role="main">
 
         <?php do_action('ocean_page_header'); ?>
+
+
+        <?php
+        if (function_exists('bcn_display') && (is_shop() || is_product_category() || is_product())): ?>
+          <div class="container clr">
+            <div class="breadcrumbs" typeof="BreadcrumbList" vocab="https://schema.org/">
+              <?php bcn_display(); ?>
+            </div>
+            <div class='bc-title'>
+              <?php if (!is_product()) {
+              echo '<h1>' . woocommerce_page_title().'</h1>';
+              }
+              ?>
+            </div>
+          </div>
+        <?php endif; ?>
+
+        
