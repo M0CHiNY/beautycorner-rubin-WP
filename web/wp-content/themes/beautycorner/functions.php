@@ -51,7 +51,7 @@ add_action('wp_enqueue_scripts', 'oceanwp_child_enqueue_parent_style', 999);
 require get_stylesheet_directory() . '/inc/svg-support.php';
 
 require get_stylesheet_directory() . '/inc/cpt.php';
-require get_stylesheet_directory() . '/inc/woocommerce/customWooCommerce.php';
+// require get_stylesheet_directory() . '/inc/woocommerce/customWooCommerce.php';
 
 require get_stylesheet_directory() . '/custom-oceanwp/cart/mini-cart.php';
 
@@ -88,16 +88,77 @@ function bc_page_layout_class($class)
 
 add_filter('ocean_post_layout_class', 'bc_page_layout_class', 20);
 
+function rc_woocommerce_recently_viewed_products( $atts, $content = null ) {
 
-// add_filter('woocommerce_get_price_html', 'my_custom_price_html', 10, 2);
+	// Get shortcode parameters
+	extract(shortcode_atts(array(
+		"per_page" => '5'
+	), $atts));
 
-// function my_custom_price_html( $price, $product ) {
-//     // Ваш код тут для перевірки умов або вимкнення ціни
-//     // Наприклад, якщо ви хочете приховати знижену ціну:
-//     if ( $product->is_on_sale() ) {
-//         $price = ''; // Пуста строка, щоб ціна не відображалася
-//     }
+	// Get WooCommerce Global
+	global $woocommerce;
 
-//     return $price;
-// }
+	// Get recently viewed product cookies data
+	$viewed_products = ! empty( $_COOKIE['woocommerce_recently_viewed'] ) ? (array) explode( '|', $_COOKIE['woocommerce_recently_viewed'] ) : array();
+	$viewed_products = array_filter( array_map( 'absint', $viewed_products ) );
+
+	// If no data, quit
+	if ( empty( $viewed_products ) )
+		return __( 'You have not viewed any product yet!', 'rc_wc_rvp' );
+
+	// Create the object
+	ob_start();
+
+	// Get products per page
+	if( !isset( $per_page ) ? $number = 5 : $number = $per_page )
+
+	// Create query arguments array
+    $query_args = array(
+    				'posts_per_page' => $number, 
+    				'no_found_rows'  => 1, 
+    				'post_status'    => 'publish', 
+    				'post_type'      => 'product', 
+    				'post__in'       => $viewed_products, 
+    				'orderby'        => 'rand'
+    				);
+
+	// Add meta_query to query args
+	$query_args['meta_query'] = array();
+
+    // Check products stock status
+    $query_args['meta_query'][] = $woocommerce->query->stock_status_meta_query();
+
+	// Create a new query
+	$r = new WP_Query($query_args);
+
+	// If query return results
+	if ( $r->have_posts() ) {
+
+		$content = '<ul class="rc_wc_rvp_product_list_widget">';
+
+		// Start the loop
+		while ( $r->have_posts()) {
+			$r->the_post();
+			global $product;
+
+			$content .= '<li>
+				<a href="' . get_permalink() . '">
+					' . ( has_post_thumbnail() ? get_the_post_thumbnail( $r->post->ID, 'shop_thumbnail' ) : woocommerce_placeholder_img( 'shop_thumbnail' ) ) . ' ' . get_the_title() . '
+				</a> ' . $product->get_price_html() . '
+			</li>';
+		}
+
+		$content .= '</ul>';
+
+	}
+
+	// Get clean object
+	$content .= ob_get_clean();
+	
+	// Return whole content
+	return $content;
+}
+
+// Register the shortcode
+add_shortcode("woocommerce_recently_viewed_products", "rc_woocommerce_recently_viewed_products");
 

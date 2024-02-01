@@ -95,10 +95,10 @@ if (!class_exists('OceanWP_WooCommerce_Config')) {
 				add_filter('ocean_hover_primary_backgrounds', array($this, 'hover_primary_backgrounds'));
 
 				/*
-										-------------------------------------------------------------------------------*/
+													-------------------------------------------------------------------------------*/
 				/*
-										 -  Front-End only actions/filters
-										/*-------------------------------------------------------------------------------*/
+													 -  Front-End only actions/filters
+													/*-------------------------------------------------------------------------------*/
 				if (!is_admin()) {
 
 					// Disable WooCommerce main page title.
@@ -305,10 +305,10 @@ if (!class_exists('OceanWP_WooCommerce_Config')) {
 		} // End __construct.
 
 		/*
-					-------------------------------------------------------------------------------*/
+						  -------------------------------------------------------------------------------*/
 		/*
-					 -  Start Class Functions
-					/*-------------------------------------------------------------------------------*/
+						   -  Start Class Functions
+						  /*-------------------------------------------------------------------------------*/
 
 		/**
 		 * Move default WooCommerce customizer sections to the theme section.
@@ -651,21 +651,29 @@ if (!class_exists('OceanWP_WooCommerce_Config')) {
 
 			// Output pagination HTML.
 			?>
-									<div class="scroller-status">
-										<div class="loader-ellips infinite-scroll-request">
-											<span class="loader-ellips__dot"></span>
-											<span class="loader-ellips__dot"></span>
-											<span class="loader-ellips__dot"></span>
-											<span class="loader-ellips__dot"></span>
-										</div>
-										<p class="scroller-status__message infinite-scroll-last"><?php echo esc_html($last); ?></p>
-										<p class="scroller-status__message infinite-scroll-error"><?php echo esc_html($error); ?></p>
-									</div>
-									<div class="infinite-scroll-nav clr">
-										<div class="alignleft newer-posts"><?php echo get_previous_posts_link('&larr; ' . esc_html__('Newer Posts', 'oceanwp')); ?></div>
-										<div class="alignright older-posts"><?php echo get_next_posts_link(esc_html__('Older Posts', 'oceanwp') . ' &rarr;', $wp_query->max_num_pages); ?></div>
-									</div>
-									<?php
+			<div class="scroller-status">
+				<div class="loader-ellips infinite-scroll-request">
+					<span class="loader-ellips__dot"></span>
+					<span class="loader-ellips__dot"></span>
+					<span class="loader-ellips__dot"></span>
+					<span class="loader-ellips__dot"></span>
+				</div>
+				<p class="scroller-status__message infinite-scroll-last">
+					<?php echo esc_html($last); ?>
+				</p>
+				<p class="scroller-status__message infinite-scroll-error">
+					<?php echo esc_html($error); ?>
+				</p>
+			</div>
+			<div class="infinite-scroll-nav clr">
+				<div class="alignleft newer-posts">
+					<?php echo get_previous_posts_link('&larr; ' . esc_html__('Newer Posts', 'oceanwp')); ?>
+				</div>
+				<div class="alignright older-posts">
+					<?php echo get_next_posts_link(esc_html__('Older Posts', 'oceanwp') . ' &rarr;', $wp_query->max_num_pages); ?>
+				</div>
+			</div>
+			<?php
 		}
 
 		/**
@@ -963,8 +971,8 @@ if (!class_exists('OceanWP_WooCommerce_Config')) {
 		public static function cart_overlay()
 		{
 			?>
-									<div class="owp-cart-overlay"></div>
-									<?php
+			<div class="owp-cart-overlay"></div>
+			<?php
 		}
 
 		/**
@@ -1011,7 +1019,7 @@ if (!class_exists('OceanWP_WooCommerce_Config')) {
 		{
 			echo '<div class="oceanwp-toolbar clr">';
 		}
-
+	
 		/**
 		 * Register off canvas filter sidebar.
 		 *
@@ -1075,7 +1083,7 @@ if (!class_exists('OceanWP_WooCommerce_Config')) {
 			// Get filter text
 			$text = get_theme_mod('ocean_woo_off_canvas_filter_text');
 			$text = oceanwp_tm_translation('ocean_woo_off_canvas_filter_text', $text);
-			$text = $text ? $text : esc_html__('Filter', 'oceanwp');
+			$text = $text ? $text : esc_html__('Filter sss', 'oceanwp');
 
 			$output = '<a href="#" class="oceanwp-off-canvas-filter">' . oceanwp_icon('menu', false) . '<span class="off-canvas-filter-text">' . esc_html($text) . '</span></a>';
 
@@ -1272,10 +1280,10 @@ if (!class_exists('OceanWP_WooCommerce_Config')) {
 			if (function_exists('oceanwp_woo_product_instock') && !oceanwp_woo_product_instock()) {
 				$label = esc_html__('Out of Stock', 'oceanwp');
 				?>
-												<div class="outofstock-badge">
-													<?php echo esc_html(apply_filters('ocean_woo_outofstock_text', $label)); ?>
-												</div><!-- .product-entry-out-of-stock-badge -->
-												<?php
+				<div class="outofstock-badge">
+					<?php echo esc_html(apply_filters('ocean_woo_outofstock_text', $label)); ?>
+				</div><!-- .product-entry-out-of-stock-badge -->
+				<?php
 			}
 		}
 
@@ -1426,16 +1434,24 @@ if (!class_exists('OceanWP_WooCommerce_Config')) {
 				ob_start();
 				?>
 
-												<li class="prev-li">
-												<a href="<?php echo esc_url(get_the_permalink($prev_post->ID)); ?>" class="owp-nav-link prev" rel="next" aria-label="<?php echo esc_attr(oceanwp_theme_strings('owp-string-wai-prev-product', false)); ?>"><?php echo $next_arrow; ?></a>
-													<a href="<?php echo esc_url(get_the_permalink($prev_post->ID)); ?>" class="owp-nav-text prev-text"><?php echo esc_html(oceanwp_theme_strings('owp-string-woo-nav-prev-product', false)); ?></a>
-													<div class="owp-nav-thumb">
-														<a title="<?php echo esc_attr(get_the_title($prev_post->ID)); ?>" href="<?php echo esc_url(get_the_permalink($prev_post->ID)); ?>"><?php echo get_the_post_thumbnail($prev_post->ID, apply_filters('single_product_small_thumbnail_size', 'shop_thumbnail')); ?></a>
-													</div>
-												</li>
+				<li class="prev-li">
+					<a href="<?php echo esc_url(get_the_permalink($prev_post->ID)); ?>" class="owp-nav-link prev" rel="next"
+						aria-label="<?php echo esc_attr(oceanwp_theme_strings('owp-string-wai-prev-product', false)); ?>">
+						<?php echo $next_arrow; ?>
+					</a>
+					<a href="<?php echo esc_url(get_the_permalink($prev_post->ID)); ?>" class="owp-nav-text prev-text">
+						<?php echo esc_html(oceanwp_theme_strings('owp-string-woo-nav-prev-product', false)); ?>
+					</a>
+					<div class="owp-nav-thumb">
+						<a title="<?php echo esc_attr(get_the_title($prev_post->ID)); ?>"
+							href="<?php echo esc_url(get_the_permalink($prev_post->ID)); ?>">
+							<?php echo get_the_post_thumbnail($prev_post->ID, apply_filters('single_product_small_thumbnail_size', 'shop_thumbnail')); ?>
+						</a>
+					</div>
+				</li>
 
-												<?php
-												$ocean_next_prev_prod_content .= ob_get_clean();
+				<?php
+				$ocean_next_prev_prod_content .= ob_get_clean();
 			}
 
 			if (is_a($next_post, 'WP_Post')) {
@@ -1443,27 +1459,35 @@ if (!class_exists('OceanWP_WooCommerce_Config')) {
 				ob_start();
 				?>
 
-												<li class="next-li">
-													<a href="<?php echo esc_url(get_the_permalink($next_post->ID)); ?>" class="owp-nav-text next-text"><?php echo esc_html(oceanwp_theme_strings('owp-string-woo-nav-next-product', false)); ?></a>
-													<a href="<?php echo esc_url(get_the_permalink($next_post->ID)); ?>" class="owp-nav-link next" rel="next" aria-label="<?php echo esc_attr(oceanwp_theme_strings('owp-string-wai-next-product', false)); ?>"><?php echo $prev_arrow; ?></i></a>
-													<div class="owp-nav-thumb">
-														<a title="<?php echo esc_attr(get_the_title($next_post->ID)); ?>" href="<?php echo esc_url(get_the_permalink($next_post->ID)); ?>"><?php echo get_the_post_thumbnail($next_post->ID, apply_filters('single_product_small_thumbnail_size', 'shop_thumbnail')); ?></a>
-													</div>
-												</li>
+				<li class="next-li">
+					<a href="<?php echo esc_url(get_the_permalink($next_post->ID)); ?>" class="owp-nav-text next-text">
+						<?php echo esc_html(oceanwp_theme_strings('owp-string-woo-nav-next-product', false)); ?>
+					</a>
+					<a href="<?php echo esc_url(get_the_permalink($next_post->ID)); ?>" class="owp-nav-link next" rel="next"
+						aria-label="<?php echo esc_attr(oceanwp_theme_strings('owp-string-wai-next-product', false)); ?>">
+						<?php echo $prev_arrow; ?></i>
+					</a>
+					<div class="owp-nav-thumb">
+						<a title="<?php echo esc_attr(get_the_title($next_post->ID)); ?>"
+							href="<?php echo esc_url(get_the_permalink($next_post->ID)); ?>">
+							<?php echo get_the_post_thumbnail($next_post->ID, apply_filters('single_product_small_thumbnail_size', 'shop_thumbnail')); ?>
+						</a>
+					</div>
+				</li>
 
-												<?php
-												$ocean_next_prev_prod_content .= ob_get_clean();
+				<?php
+				$ocean_next_prev_prod_content .= ob_get_clean();
 			}
 
 			?>
 
-									<div class="owp-product-nav-wrap clr">
-										<ul class="owp-product-nav">
-											<?php echo $ocean_next_prev_prod_content; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped above. ?>
-										</ul>
-									</div>
+			<div class="owp-product-nav-wrap clr">
+				<ul class="owp-product-nav">
+					<?php echo $ocean_next_prev_prod_content; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped above. ?>
+				</ul>
+			</div>
 
-									<?php
+			<?php
 		}
 
 		/**
@@ -1495,60 +1519,72 @@ if (!class_exists('OceanWP_WooCommerce_Config')) {
 
 			?>
 
-									<div class="owp-floating-bar">
-										<div class="container clr">
-											<div class="left">
-												<p class="selected"><?php echo esc_html(oceanwp_theme_strings('owp-string-woo-floating-bar-selected', false)); ?></p>
-												<<?php echo esc_attr($fb_h_tag); ?> class="entry-title" itemprop="name"><?php echo wp_trim_words($product->get_title(), '4'); ?></<?php echo esc_attr($fb_h_tag); ?>>
-											</div>
-											<?php
-											if (false === $fb_woo_cond || $fb_show_cond) {
-												?>
-														<div class="right">
-															<div class="product_price">
-																<p class="price"><?php echo $product->get_price_html(); ?></p>
-															</div>
-											<?php } ?>
-												<?php
-												// If out of stock.
-												if ('outofstock' == $product->get_stock_status()) {
-													?>
-															<p class="stock out-of-stock"><?php echo esc_html(oceanwp_theme_strings('owp-string-woo-floating-bar-out-stock', false)); ?></p>
-															<?php
-												} elseif (false === $fb_woo_cond || $fb_show_cond) {
+			<div class="owp-floating-bar">
+				<div class="container clr">
+					<div class="left">
+						<p class="selected">
+							<?php echo esc_html(oceanwp_theme_strings('owp-string-woo-floating-bar-selected', false)); ?>
+						</p>
+						<<?php echo esc_attr($fb_h_tag); ?> class="entry-title" itemprop="name">
+							<?php echo wp_trim_words($product->get_title(), '4'); ?>
+						</<?php echo esc_attr($fb_h_tag); ?>>
+					</div>
+					<?php
+					if (false === $fb_woo_cond || $fb_show_cond) {
+						?>
+						<div class="right">
+							<div class="product_price">
+								<p class="price">
+									<?php echo $product->get_price_html(); ?>
+								</p>
+							</div>
+						<?php } ?>
+						<?php
+						// If out of stock.
+						if ('outofstock' == $product->get_stock_status()) {
+							?>
+							<p class="stock out-of-stock">
+								<?php echo esc_html(oceanwp_theme_strings('owp-string-woo-floating-bar-out-stock', false)); ?>
+							</p>
+							<?php
+						} elseif (false === $fb_woo_cond || $fb_show_cond) {
 
-													if ($product && $product->is_type('simple') && $product->is_purchasable() && $product->is_in_stock() && !$product->is_sold_individually()) {
-														echo self::floating_bar_add_to_cart($product);
-													} else {
-														?>
-																		<button type="submit" class="button top"><?php echo esc_html(oceanwp_theme_strings('owp-string-woo-floating-bar-select-btn', false)); ?></button>
-																		<?php
-													}
-												} else {
+							if ($product && $product->is_type('simple') && $product->is_purchasable() && $product->is_in_stock() && !$product->is_sold_individually()) {
+								echo self::floating_bar_add_to_cart($product);
+							} else {
+								?>
+								<button type="submit" class="button top">
+									<?php echo esc_html(oceanwp_theme_strings('owp-string-woo-floating-bar-select-btn', false)); ?>
+								</button>
+								<?php
+							}
+						} else {
 
-													// Get price message display state.
-													$fb_woo_cond_msg = get_theme_mod('ocean_woo_single_cond_msg', 'yes');
+							// Get price message display state.
+							$fb_woo_cond_msg = get_theme_mod('ocean_woo_single_cond_msg', 'yes');
 
-													if ('yes' === $fb_woo_cond_msg) {
+							if ('yes' === $fb_woo_cond_msg) {
 
-														// Get Add to Cart button replacement message.
-														$fb_woo_msg_txt = get_theme_mod('ocean_woo_single_cond_msg_text');
-														$fb_woo_msg_txt = $fb_woo_msg_txt ? $fb_woo_msg_txt : esc_html__('Log in to view price and purchase', 'oceanwp');
-														?>
-																	<div class="right">
-																		<p class="selected"><?php echo esc_html($fb_woo_msg_txt); ?></p>
-																	</div>
-																		<?php
-													}
-												}
-												if (false === $fb_woo_cond || $fb_show_cond) {
-													?>
-													</div>
-												<?php } ?>
-										</div>
-									</div>
+								// Get Add to Cart button replacement message.
+								$fb_woo_msg_txt = get_theme_mod('ocean_woo_single_cond_msg_text');
+								$fb_woo_msg_txt = $fb_woo_msg_txt ? $fb_woo_msg_txt : esc_html__('Log in to view price and purchase', 'oceanwp');
+								?>
+								<div class="right">
+									<p class="selected">
+										<?php echo esc_html($fb_woo_msg_txt); ?>
+									</p>
+								</div>
+								<?php
+							}
+						}
+						if (false === $fb_woo_cond || $fb_show_cond) {
+							?>
+						</div>
+					<?php } ?>
+				</div>
+			</div>
 
-									<?php
+			<?php
 		}
 
 		/**
@@ -2282,25 +2318,25 @@ if (!class_exists('OceanWP_WooCommerce_Config')) {
 			ob_start();
 			?>
 
-									<li class="<?php echo esc_attr($classes); ?>">
-										<?php oceanwp_wcmenucart_menu_item(); ?>
-										<?php
-										if (
-											'drop_down' == $style
-											&& 'full_screen' != $header_style
-											&& 'vertical' != $header_style
-										) {
-											?>
-													<div class="current-shop-items-dropdown owp-mini-cart clr">
-														<div class="current-shop-items-inner clr">
-															<?php the_widget('WC_Widget_Cart', 'title='); ?>
-														</div>
-													</div>
-										<?php } ?>
-									</li>
+			<li class="<?php echo esc_attr($classes); ?>">
+				<?php oceanwp_wcmenucart_menu_item(); ?>
+				<?php
+				if (
+					'drop_down' == $style
+					&& 'full_screen' != $header_style
+					&& 'vertical' != $header_style
+				) {
+					?>
+					<div class="current-shop-items-dropdown owp-mini-cart clr">
+						<div class="current-shop-items-inner clr">
+							<?php the_widget('WC_Widget_Cart', 'title='); ?>
+						</div>
+					</div>
+				<?php } ?>
+			</li>
 
-									<?php
-									return ob_get_clean();
+			<?php
+			return ob_get_clean();
 
 		}
 
