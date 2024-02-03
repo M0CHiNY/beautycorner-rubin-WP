@@ -2338,7 +2338,7 @@ h6 {
 }
 .product-inner .woo-entry-image.clr a img {
   border-radius: 16px;
-  width: 367px;
+  width: 100%;
   max-width: 100%;
 }
 .product-inner .owp-quick-view {
@@ -2444,6 +2444,7 @@ h6 {
   border-radius: 16px;
   top: 9px;
   right: 7px;
+  border: 1px solid #c40075;
 }
 
 .product-inner .woosw-btn-icon:before {
@@ -2463,5 +2464,17 @@ h6 {
 @media (max-width: 767px) {
   .bc-title {
     font-size: 25px;
+  }
+}
+
+.single-product .summary .woosw-btn {
+  padding: 3px 15px;
+}
+.single-product .summary .woosw-btn span {
+  color: white;
+}
+@media (max-width: 950px) {
+  #right-sidebar {
+    display: none;
   }
 }

@@ -27,7 +27,7 @@ function oceanwp_child_enqueue_parent_style()
 	$version = $theme->get('Version');
 
 	// Load the stylesheet.
-	wp_enqueue_style('child-style', get_stylesheet_directory_uri() . '/style.css', array('oceanwp-style'), $version);
+	// wp_enqueue_style('child-style', get_stylesheet_directory_uri() . '/style.css', array('oceanwp-style'), $version);
 	wp_enqueue_style('beautycorner-global', get_stylesheet_directory_uri() . '/assets/css/app.css', array(), '1.0', 'all');
 	wp_enqueue_style('beautycorner-cunstom', get_stylesheet_directory_uri() . '/assets/css/custom.css', array(), '1.0', 'all');
 	wp_enqueue_script('beautycorner-main', get_stylesheet_directory_uri() . '/assets/js/app.js', array(), '1.0.0', true);
@@ -88,77 +88,50 @@ function bc_page_layout_class($class)
 
 add_filter('ocean_post_layout_class', 'bc_page_layout_class', 20);
 
-function rc_woocommerce_recently_viewed_products( $atts, $content = null ) {
 
-	// Get shortcode parameters
-	extract(shortcode_atts(array(
-		"per_page" => '5'
-	), $atts));
 
-	// Get WooCommerce Global
-	global $woocommerce;
+add_action('ocean_after_single_product_price', 'ts_add_notice_free_shipping');
 
-	// Get recently viewed product cookies data
-	$viewed_products = ! empty( $_COOKIE['woocommerce_recently_viewed'] ) ? (array) explode( '|', $_COOKIE['woocommerce_recently_viewed'] ) : array();
-	$viewed_products = array_filter( array_map( 'absint', $viewed_products ) );
 
-	// If no data, quit
-	if ( empty( $viewed_products ) )
-		return __( 'You have not viewed any product yet!', 'rc_wc_rvp' );
-
-	// Create the object
-	ob_start();
-
-	// Get products per page
-	if( !isset( $per_page ) ? $number = 5 : $number = $per_page )
-
-	// Create query arguments array
-    $query_args = array(
-    				'posts_per_page' => $number, 
-    				'no_found_rows'  => 1, 
-    				'post_status'    => 'publish', 
-    				'post_type'      => 'product', 
-    				'post__in'       => $viewed_products, 
-    				'orderby'        => 'rand'
-    				);
-
-	// Add meta_query to query args
-	$query_args['meta_query'] = array();
-
-    // Check products stock status
-    $query_args['meta_query'][] = $woocommerce->query->stock_status_meta_query();
-
-	// Create a new query
-	$r = new WP_Query($query_args);
-
-	// If query return results
-	if ( $r->have_posts() ) {
-
-		$content = '<ul class="rc_wc_rvp_product_list_widget">';
-
-		// Start the loop
-		while ( $r->have_posts()) {
-			$r->the_post();
-			global $product;
-
-			$content .= '<li>
-				<a href="' . get_permalink() . '">
-					' . ( has_post_thumbnail() ? get_the_post_thumbnail( $r->post->ID, 'shop_thumbnail' ) : woocommerce_placeholder_img( 'shop_thumbnail' ) ) . ' ' . get_the_title() . '
-				</a> ' . $product->get_price_html() . '
-			</li>';
-		}
-
-		$content .= '</ul>';
-
+function ts_add_notice_free_shipping()
+{
+	$free_shipping_settings = get_option('woocommerce_free_shipping_1_settings');
+	$amount_for_free_shipping = $free_shipping_settings['min_amount'];
+	$cart = WC()->cart->get_subtotal();
+	$remaining = $amount_for_free_shipping - $cart;
+	if ($amount_for_free_shipping > $cart) {
+		$notice = sprintf("Noch %s bis zum gratis Versand.", wc_price($remaining));
+		wc_print_notice($notice, 'notice');
+	} else {
+		wc_print_notice("Dir steht kostenloser Versand zur Verfügung", 'notice');
 	}
-
-	// Get clean object
-	$content .= ob_get_clean();
 	
-	// Return whole content
-	return $content;
 }
 
-// Register the shortcode
-add_shortcode("woocommerce_recently_viewed_products", "rc_woocommerce_recently_viewed_products");
 
+function bc_hide_shipping_for_order_total($rates)
+{
+	$free = array();
+
+	$order_total = WC()->cart->get_subtotal();
+
+	$free_shipping_settings = get_option('woocommerce_free_shipping_1_settings');
+	$amount_for_free_shipping = $free_shipping_settings['min_amount'];
+
+	if ($order_total >= $amount_for_free_shipping) {
+		foreach ($rates as $rate_id => $rate) {
+			// Перевірка, чи метод безкоштовної доставки
+			if ('free_shipping' === $rate->get_method_id()) {
+				$free[$rate_id] = $rate;
+			}
+			if ('local_pickup' === $rate->get_method_id()) {
+				$free[$rate_id] = $rate;
+			}
+		}
+
+	}
+	return !empty($free) ? $free : $rates;
+}
+add_filter('woocommerce_package_rates', 'bc_hide_shipping_for_order_total', 100);
+
+ 
