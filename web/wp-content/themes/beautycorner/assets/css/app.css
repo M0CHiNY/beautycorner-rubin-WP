@@ -2478,3 +2478,6 @@ h6 {
     display: none;
   }
 }
+.jQuery-plainOverlay-progress {
+  border-top: 3px solid #c40075 !important;
+}

@@ -68,10 +68,6 @@
   text-transform: uppercase;
 }
 
-#site-navigation-wrap .current-menu-item span {
-  color: #a00057;
-}
-
 .prices__card {
   background-color: #d9d2ce;
 }
@@ -828,6 +824,45 @@ body:not(.woocommerce-block-theme-has-button-styles)
 .woocommerce .lost_reset_password button {
   border-radius: 18px;
 }
+
+.woocommerce-MyAccount-navigation ul li a:before {
+  color: #c40075 !important;
+}
+.wc-block-components-notice-banner.is-info {
+  border-color: #c40075 !important;
+  background-color: #fff !important;
+}
+.wc-block-components-notice-banner.is-info > svg {
+  background-color: #c40075 !important;
+}
+
+.woocommerce-MyAccount-content .addresses .woocommerce-Address .title h3 {
+  color: #c40075 !important;
+  margin-bottom: 15px;
+}
+.woocommerce-MyAccount-content .addresses .woocommerce-Address .title a {
+  position: relative;
+  top: 0;
+  right: 0;
+  padding: 0;
+  background-color: transparent;
+  color: #000;
+}
+.woocommerce button.button {
+  border-radius: 8px;
+}
+.woocommerce-page form .form-row-wide span em {
+  font-size: 14px;
+}
+input[type="checkbox"]:checked:before {
+  color: #c40075 !important;
+}
+.woocommerce-MyAccount-content #payment ul.payment_methods .woocommerce-PaymentMethod>input[type=radio]:first-child:checked+label:before {
+  color: #c40075 !important;
+}
+.woocommerce-MyAccount-content #payment .payment_methods li .payment_box{
+  padding: 5px 0 0 10px;
+}
 /* my-account */
 
 /* single-product */
@@ -861,17 +896,20 @@ owp-floating-bar button.button {
   color: #c40075 !important;
 }
 
-.summary .wc-block-components-notice-banner.is-info{
+.summary .wc-block-components-notice-banner.is-info {
   border-color: #c40075;
   background-color: #fff;
   padding: 10px !important;
 }
 
-.summary .wc-block-components-notice-banner.is-info>svg{
-  background-color: #c40075;  
+.summary .wc-block-components-notice-banner.is-info > svg {
+  background-color: #c40075;
 }
 
-.summary .wc-block-components-notice-banner.is-info .wc-block-components-notice-banner__content >span{
+.summary
+  .wc-block-components-notice-banner.is-info
+  .wc-block-components-notice-banner__content
+  > span {
   color: #c40075;
 }
 
@@ -1113,7 +1151,7 @@ owp-floating-bar button.button {
 .breadcrumbs > span:not(:first-child) {
   padding-left: 5px;
 }
-.breadcrumbs > span:last-child {
+.breadcrumbs > span .breadcrumb_last {
   color: #c40075;
 }
 
@@ -1471,4 +1509,23 @@ owp-floating-bar button.button {
 input:focus-visible + label,
 a:focus {
   outline: 1px solid transparent !important;
+}
+
+/* drop-menu in header color */
+#site-navigation-wrap .menu-item span,
+#site-navigation-wrap .sub-menu .menu-item span {
+  color: #000;
+}
+
+#site-navigation-wrap .current-menu-item span,
+#site-navigation-wrap .sub-menu .current-menu-item span {
+  color: #c40075;
+}
+/* drop-menu in header color */
+
+
+@media only screen and (max-width: 1080px) {
+  .career {
+    padding-bottom: 50px;
+  }
 }

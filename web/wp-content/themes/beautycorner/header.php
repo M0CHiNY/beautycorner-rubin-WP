@@ -53,19 +53,18 @@
         <?php do_action('ocean_page_header'); ?>
 
 
-        <?php
-        if (function_exists('bcn_display') && (is_shop() || is_product_category() || is_product())): ?>
-          <div class="container clr">
-            <div class="breadcrumbs" typeof="BreadcrumbList" vocab="https://schema.org/">
-              <?php bcn_display(); ?>
-            </div>
-            <div class='bc-title'>
-              <?php if (!is_product()) {
-              echo '<h1>' . woocommerce_page_title().'</h1>';
-              }
-              ?>
-            </div>
-          </div>
-        <?php endif; ?>
 
-        
+
+
+        <?php
+        if (function_exists('yoast_breadcrumb') && (is_shop() || is_product_category() || is_product())) : ?>
+          <div class="container clr">
+            <?php
+            yoast_breadcrumb('<p id="breadcrumbs" class="breadcrumbs">', '</p>');
+            ?>
+          </div>
+          
+        <?php
+      endif; ?>
+
+
