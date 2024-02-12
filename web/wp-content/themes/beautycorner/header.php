@@ -63,7 +63,12 @@
             yoast_breadcrumb('<p id="breadcrumbs" class="breadcrumbs">', '</p>');
             ?>
           </div>
-          
+          <div class='bc-title'>
+            <?php if (!is_product()) {
+              echo '<h1>' . woocommerce_page_title() . '</h1>';
+            }
+            ?>
+          </div>
         <?php
       endif; ?>
 

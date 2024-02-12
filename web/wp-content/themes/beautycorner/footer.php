@@ -89,7 +89,7 @@
 					Beauty Corner Rubin
 				</div>
 				<div class="footer__bottom-text">
-					<a href="https://rankexperts.ch/" target="_blank" rel="noopener noreferrer">Entwickelt von
+					Entwickelt von<a href="https://rankexperts.ch/" target="_blank" rel="noopener noreferrer">
 						<span>Rankexperts</span></a>
 				</div>
 			</div>

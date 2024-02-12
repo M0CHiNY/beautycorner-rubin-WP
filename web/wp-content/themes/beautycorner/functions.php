@@ -150,6 +150,7 @@ add_filter('gettext', function ($translated_text) {
 // tags text for single product
 
 add_filter('woocommerce_get_price_html', 'custom_display_price_without_tax', 10, 2);
+
 function custom_display_price_without_tax($price, $product)
 {
 	if ($product->is_taxable() && !wc_prices_include_tax() && $product->is_purchasable() && is_product()) {
@@ -158,12 +159,114 @@ function custom_display_price_without_tax($price, $product)
 	return $price;
 }
 
+add_filter('woocommerce_cart_subtotal', 'bc_cart_subtotal_display', 10, 3);
 
-// Set Minimum Order Amount in WooCommerce
-remove_action( 'woocommerce_proceed_to_checkout', 'woocommerce_button_proceed_to_checkout', 20 );
+function bc_cart_subtotal_display($subtotal, $compound, $cart)
+{
+	if (is_cart() || is_checkout()) {
+		if (WC()->cart->prices_include_tax) {
+			$tax_string = '';
+		} else {
+			$tax_string = __('(exkl. MwSt)', 'woocommerce');
+		}
 
-add_filter('woof_clear_all_text', function($default_text) {
-    return 'Filter löschen';
+		$subtotal .= ' ' . '<span class="subtotal-tax--bc">' . $tax_string . '</span>';
+	}
+	return $subtotal;
+}
+
+
+
+
+add_filter('woof_clear_all_text', function ($default_text) {
+	return 'Filter löschen';
 }, 99, 1);
+
+
+
+// First, hide the Update Cart button
+add_action('wp_head', 'ecommercehints_hide_update_cart_button');
+function ecommercehints_hide_update_cart_button()
+{ ?>
+	<style>
+		button[name="update_cart"],
+		input[name="update_cart"] {
+			display: none;
+		}
+	</style>
+<?php }
+
+// Second, add the jQuery to update the cart automaitcally on quantity change
+add_action('wp_footer', 'ecommercehints_update_cart_on_quantity_change');
+function ecommercehints_update_cart_on_quantity_change()
+{ ?>
+	<script>
+		jQuery(function ($) {
+			let timeout;
+			$('.woocommerce').on('change', 'input.qty', function () {
+				if (timeout !== undefined) {
+					clearTimeout(timeout);
+				}
+				timeout = setTimeout(function () {
+					$("[name='update_cart']").trigger("click");
+				}, 500); // 500 being MS (half a second)
+			});
+		});
+	</script>
+<?php }
+
+
+
+// add title payment
+add_action('woocommerce_review_order_before_payment', 'wc_privacy_message_below_checkout_button');
+
+function wc_privacy_message_below_checkout_button()
+{
+	echo '<h3 class="payment-choices">Zahlungsoptionen</h3>';
+}
+
+//add image product checkout
+
+add_filter('woocommerce_cart_item_name', 'ts_product_image_on_checkout', 10, 3);
+
+function ts_product_image_on_checkout($name, $cart_item, $cart_item_key)
+{
+	/* Return if not checkout page */
+	if (!is_checkout()) {
+		return $name;
+	}
+	/* Get product object */
+	$_product = apply_filters('woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key);
+	/* Get product thumbnail */
+	$thumbnail = $_product->get_image();
+	/* Add wrapper to image and add some css */
+	$image = '<div class="product-image-checkout">'
+		. $thumbnail .
+		'</div>';
+	/* Prepend image to name and return it */
+	return $image . $name;
+}
+
+//change qunti checkout
+add_filter('woocommerce_checkout_cart_item_quantity', 'customizing_checkout_item_quantity', 10, 3);
+function customizing_checkout_item_quantity($quantity_html, $cart_item)
+{
+	$quantity_html = '<strong class="product-quantity">' . $cart_item['quantity'] . '</strong>';
+	return $quantity_html;
+}
+
+//change button cupon remove
+function filter_woocommerce_cart_totals_coupon_html($coupon_html, $coupon, $discount_amount_html)
+{
+	// Change text
+	$coupon_html = $discount_amount_html . ' <a href="' . esc_url(add_query_arg('remove_coupon', rawurlencode($coupon->get_code()), defined('WOOCOMMERCE_CHECKOUT') ? wc_get_checkout_url() : wc_get_cart_url())) . '" class="woocommerce-remove-coupon" data-coupon="' . esc_attr($coupon->get_code()) . '">' . __('remove', 'woocommerce') . '</a>';
+
+	return $coupon_html;
+}
+add_filter('woocommerce_cart_totals_coupon_html', 'filter_woocommerce_cart_totals_coupon_html', 10, 3);
+
+
+// cupon checkout
+remove_action('woocommerce_before_checkout_form', 'woocommerce_checkout_coupon_form', 10);
 
 

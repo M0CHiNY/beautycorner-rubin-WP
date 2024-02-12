@@ -15,7 +15,8 @@ function oceanwp_child_enqueue_parent_style()
   if (is_page_template('kontakt.php')) {
     wp_enqueue_script('beautycorner-script', get_stylesheet_directory_uri() . '/assets/js/script.js', array(), '1.0.0', true);
   }
-
 }
 
 add_action('wp_enqueue_scripts', 'oceanwp_child_enqueue_parent_style', 999);
+
+
